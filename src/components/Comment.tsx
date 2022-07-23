@@ -164,16 +164,29 @@ const Comment = ({
 	}
 
 	function handleDeleteComment(id: number) {
+		console.log("YO.");
+
+		/* check top level comments */
 		let newComments = comments.filter((comment) => comment.id !== id);
-		newComments = newComments.map((comment) => {
+
+		/* check replies */
+		newComments.forEach((comment) => {
 			if (comment.replies) {
-				let newReplies = [];
-				newReplies = comment.replies.filter(
-					(reply: any) => reply.id !== id
+				comment.replies = comment.replies.filter(
+					(reply: CommentModel) => reply.id !== id
 				);
-				return { ...comment, replies: newReplies };
 			}
-			return comment;
+		});
+
+		/* check nested replies */
+		newComments.forEach((comment: CommentModel) => {
+			comment.replies?.forEach((reply: CommentModel) => {
+				if (reply.replies) {
+					reply.replies = reply.replies?.filter(
+						(nestedReply: CommentModel) => nestedReply.id !== id
+					);
+				}
+			});
 		});
 
 		setComments(newComments);

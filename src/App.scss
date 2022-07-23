@@ -290,6 +290,17 @@ textarea {
 		justify-content: start;
 	}
 
+	.edit-box {
+		margin-bottom: 4rem;
+		margin-left: 3.5rem;
+	}
+
+	.update-btn {
+		position: absolute;
+		right: 1rem;
+		bottom: 1rem;
+	}
+
 	.comment-action-button-container {
 		display: none;
 	}
