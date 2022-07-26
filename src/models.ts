@@ -1,12 +1,12 @@
-export interface User {
+export type User = {
 	image: {
 		png: string;
 		webp: string;
 	};
 	username: string;
-}
+};
 
-export interface CommentModel {
+export type Comment = {
 	id?: number;
 	content: string;
 	createdAt: string;
@@ -20,4 +20,4 @@ export interface CommentModel {
 		username: string;
 	};
 	replies?: any;
-}
+};
