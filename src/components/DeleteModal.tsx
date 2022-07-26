@@ -1,8 +1,9 @@
 import React from "react";
+import { Comment } from "../models";
 
 interface Props {
-	comments: any;
-	setComments: any;
+	comments: Comment[];
+	setComments: React.Dispatch<React.SetStateAction<Comment[]>>;
 	id?: number;
 	setShowDeleteModal: React.Dispatch<React.SetStateAction<boolean>>;
 	handleDeleteComment: (arg0: number) => void;

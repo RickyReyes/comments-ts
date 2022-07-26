@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { CommentModel, User } from "../models";
+import { Comment, User } from "../models";
 
 interface Props {
-	comments: CommentModel[];
-	setComments: React.Dispatch<React.SetStateAction<CommentModel[]>>;
+	comments: Comment[];
+	setComments: React.Dispatch<React.SetStateAction<Comment[]>>;
 	currentUser: User;
 }
 

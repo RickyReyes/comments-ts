@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
-import Comment from "./components/Comment";
+import CommentCard from "./components/CommentCard";
 import NewComment from "./components/NewComment";
 import data from "./data.json";
-import { CommentModel } from "./models";
+import { Comment } from "./models";
 
 const App: React.FC = () => {
-	const [comments, setComments] = useState<CommentModel[]>(
+	const [comments, setComments] = useState<Comment[]>(
 		data.comments.map((comment) => ({
 			...comment,
 			id: Math.random(),
@@ -25,7 +25,7 @@ const App: React.FC = () => {
 			<ul className="comments-container">
 				{comments.map((comment) => (
 					<>
-						<Comment
+						<CommentCard
 							id={comment.id}
 							currentUser={data.currentUser}
 							comments={comments}
@@ -34,9 +34,9 @@ const App: React.FC = () => {
 						/>
 						{comment.replies && (
 							<ul className="replies-container">
-								{comment.replies.map((reply: any) => (
+								{comment.replies.map((reply: Comment) => (
 									<>
-										<Comment
+										<CommentCard
 											currentUser={data.currentUser}
 											comments={comments}
 											setComments={setComments}
@@ -46,8 +46,8 @@ const App: React.FC = () => {
 										{reply.replies && (
 											<ul className="replies-container">
 												{reply.replies.map(
-													(nestedReply: any) => (
-														<Comment
+													(nestedReply: Comment) => (
+														<CommentCard
 															currentUser={
 																data.currentUser
 															}
